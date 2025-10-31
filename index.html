@@ -5,19 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>B.Ed. Student Profile - Sakshi Mukhmal</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
     body {
       font-family: "Poppins", sans-serif;
       background: #f5f7fa;
       color: #333;
     }
-
-    /* Header */
     header {
       background: linear-gradient(135deg, #004aad, #007bff);
       color: white;
@@ -35,70 +28,21 @@
       font-weight: 500;
       font-size: 1rem;
     }
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    /* Sections */
+    nav a:hover { text-decoration: underline; }
     section {
       padding: 60px 20px;
       max-width: 950px;
       margin: auto;
     }
-
-    /* Home Section with Teaching Background */
-    .home {
-      text-align: center;
-      /*background-image: url('BG5.avif');*/
-      background-size: cover;
-      background-position: center;
-      border-radius: 15px;
-      padding: 100px 20px;
-      margin-top: 20px;
-      color: white;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      position: relative;
-      overflow: hidden;
-    }
-    .home::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 74, 173, 0.65);
-      z-index: 0;
-    }
-    .home-content {
-      position: relative;
-      z-index: 1;
-    }
-    .home img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      border: 4px solid white;
-      object-fit: cover;
-      margin-bottom: 15px;
-    }
-    .home h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-    .home p {
-      font-size: 1.2rem;
-    }
-
-    /* Section Titles */
     h2.section-title {
       color: #004aad;
       border-bottom: 3px solid #004aad;
       display: inline-block;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       padding-bottom: 5px;
       font-weight: 600;
     }
-
-    /* Info Boxes */
-    .about, .education, .contact {
+    .about, .education, .contact, .presentations, .gallery-section, .note {
       background: white;
       border-radius: 15px;
       box-shadow: 0 3px 10px rgba(0,0,0,0.1);
@@ -106,38 +50,87 @@
       margin-bottom: 30px;
       transition: transform 0.3s ease;
     }
-    .about:hover, .education:hover, .contact:hover {
+    .about:hover, .education:hover, .contact:hover, .presentations:hover, .gallery-section:hover {
       transform: translateY(-5px);
     }
-    ul {
-      list-style: square;
-      margin-left: 20px;
-      line-height: 1.8;
+    ul { list-style: square; margin-left: 20px; line-height: 1.8; }
+
+    .presentation-item {
+      margin-bottom: 50px;
+      padding: 20px;
+      background: #f9fbff;
+      border: 1px solid #dce6ff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .presentation-item h3 {
+      color: #004aad;
+      margin-bottom: 10px;
+      font-weight: 600;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+    .presentation-item p {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #333;
+      font-size: 0.95rem;
+    }
+    .file-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .file-links a {
+      background: #004aad;
+      color: white;
+      padding: 10px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+    .file-links a:hover { background: #007bff; }
+    iframe, video {
+      width: 100%;
+      max-width: 900px;
+      height: 480px;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      display: block;
+      margin: 0 auto 25px auto;
     }
 
-    /* Gallery */
-    .gallery {
+    /* --- Fixed gallery styles --- */
+    .gallery-section {
+      /* wrapper styling kept consistent with other sections */
+    }
+    .gallery-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
       margin-top: 20px;
+      align-items: stretch;          /* ensure equal card heights */
+      justify-items: center;         /* center cards inside grid cells */
     }
     .card {
-      position: relative;
-      height: 200px;
+      width: 100%;
+      max-width: 320px;              /* prevents cards getting too wide on large screens */
+      height: 220px;                 /* consistent card height */
       border-radius: 15px;
       background-size: cover;
       background-position: center;
       box-shadow: 0 3px 8px rgba(0,0,0,0.2);
       overflow: hidden;
       transition: transform 0.3s ease;
+      display: flex;
+      align-items: flex-end;         /* keeps overlay at bottom */
     }
-    .card:hover {
-      transform: scale(1.05);
-    }
+    .card:hover { transform: scale(1.03); }
     .overlay {
-      position: absolute;
-      bottom: 0;
       width: 100%;
       background: rgba(0, 74, 173, 0.8);
       color: white;
@@ -145,9 +138,16 @@
       padding: 10px;
       font-weight: 500;
       font-size: 1rem;
+      border-bottom-left-radius: 15px;
+      border-bottom-right-radius: 15px;
     }
 
-    /* Footer */
+    /* small screens: slightly taller cards so content is visible */
+    @media (max-width: 480px) {
+      .card { height: 240px; max-width: 100%; }
+      iframe, video { height: 320px; }
+    }
+
     footer {
       background: #004aad;
       color: white;
@@ -159,29 +159,32 @@
     }
   </style>
 </head>
-
 <body>
 
-  <!-- Header -->
   <header>
     <nav>
       <a href="#home">Home</a>
       <a href="#about">About</a>
       <a href="#education">Education</a>
+      <a href="#presentations">Presentations</a>
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <!-- Home Section -->
-  <section id="home" class="home" style="background-image: url('BG5.jpg');">
-    <div class="home-content">
-      <h1>Hello, I'm <strong>Sakshi Mukhmal</strong></h1>
-      <p>B.Ed. Student | Future Educator | Lifelong Learner</p>
-    </div>
-  </section>
+  <section id="home" 
+  style="
+    text-align: center; 
+    color: white; 
+    padding: 120px 20px; 
+    background: 
+      linear-gradient(rgba(0, 74, 173, 0.6), rgba(0, 123, 255, 0.6)),
+      url('BG5.jpg') center/cover no-repeat; 
+  ">
+  <h1>Hello, I'm <strong>Sakshi Mukhmal</strong></h1>
+  <p>B.Ed. Student | Future Educator | Lifelong Learner</p>
+</section>
 
-  <!-- About Section -->
   <section id="about" class="about">
     <h2 class="section-title">About Me</h2>
     <p>
@@ -190,11 +193,10 @@
     </p>
   </section>
 
-  <!-- Education Section -->
   <section id="education" class="education">
     <h2 class="section-title">My Education</h2>
     <ul>
-      <li><strong>B.Ed.</strong> – Govt. P.G. College Agastyamuni (Session: 2024–2026)</li>
+      <li><strong>B.Ed.</strong> – Govt. P.G. College Agastyamuni (2024–2026)</li>
       <li><strong>M.A.</strong> – Govt. P.G. College Agastyamuni (2021–2023)</li>
       <li><strong>B.A.</strong> – Govt. P.G. College Agastyamuni (2018–2021)</li>
       <li><strong>Intermediate:</strong> Govt. Inter College Pathalidhar (2018)</li>
@@ -202,39 +204,77 @@
     </ul>
   </section>
 
-  <!-- Gallery Section -->
-  <section id="gallery">
+  <!-- Presentations Section -->
+  <section id="presentations" class="presentations">
+    <h2 class="section-title">My Presentations</h2>
+
+    <div class="presentation-item">
+      <h3>📘 Teaching - Its Meaning and Its Stages</h3>
+      <p><strong>Files:</strong></p>
+      <div class="file-links">
+        <a href="Teaching- Its Meaning and Its Stages_Sakshi_PDF.pdf" target="_blank">📄 View PDF</a>
+        <a href="Teaching- Its Meaning and Its Stages_Sakshi_PPT.ppt" download>💾 Download PPT</a>
+        <a href="Teaching- Its Meaning and Its Stages_Sakshi_MP4.mp4" target="_blank">🎥 Watch Video</a>
+      </div>
+      <iframe src="Teaching- Its Meaning and Its Stages_Sakshi_PDF.pdf" allowfullscreen></iframe>
+    </div>
+
+    <div class="presentation-item">
+      <h3>📗 Gender and Sexuality, Sexual Harassment and Abuse</h3>
+      <p><strong>Files:</strong></p>
+      <div class="file-links">
+        <a href="Gender and Sexuality Sexual Harassment and Abuse_Sakshi Mukhmal_PDF.pdf" target="_blank">📄 View PDF</a>
+        <a href="Gender and Sexuality Sexual Harassment and Abuse_Sakshi Mukhmal_PPT.ppt" download>💾 Download PPT</a>
+        <a href="Gender and Sexuality Sexual Harassment and Abuse_Sakshi Mukhmal_mp4.mp4" target="_blank">🎥 Watch Video</a>
+      </div>
+      <iframe src="Gender and Sexuality Sexual Harassment and Abuse_Sakshi Mukhmal_PDF.pdf" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- Gallery Section (moved after presentations) -->
+  <section id="gallery" class="gallery-section">
     <h2 class="section-title">My Gallery</h2>
-    <div class="gallery">
+
+    <div class="gallery-grid">
       <div class="card" style="background-image: url('BG1.avif');">
         <div class="overlay">Teaching Practice</div>
       </div>
+
       <div class="card" style="background-image: url('BG2.avif');">
         <div class="overlay">Kids Learning Activity</div>
       </div>
+
       <div class="card" style="background-image: url('BG3.webp');">
         <div class="overlay">Classroom Interaction</div>
       </div>
+
       <div class="card" style="background-image: url('BG4.jpg');">
         <div class="overlay">Creative Teaching</div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Note Section -->
+  <section class="note">
+    <h2 class="section-title">Note</h2>
+    <p>
+      The presentations above have been created and presented as part of my B.Ed. coursework.
+      You can view or download the PDF and PPT files, and also watch the recorded presentation videos.
+      These works reflect my understanding of key educational concepts and my approach to classroom teaching.
+    </p>
+  </section>
+
   <section id="contact" class="contact">
-    <h2 class="section-title">Contact Me</h2>
+    <h2 class="section-title">Contact Details</h2>
     <p>
       <strong>Email:</strong> mukhmalsakshi2000@gmail.com <br>
-      <strong>Phone:</strong> 9258319839 <br>
+      <strong>Phone:</strong> 9282726252 <br>
       <strong>Address:</strong> Village Kudi-Aduli, Post Office Kimana, Rudraprayag, Uttarakhand
     </p>
   </section>
 
-  <!-- Footer -->
   <footer>
     © 2025 Sakshi Mukhmal | B.Ed. Student Profile | Made with 💙 for Education
   </footer>
-
 </body>
 </html>
